@@ -1,0 +1,9 @@
+[submodule "2. i2c/Core/CMSIS"]
+	path = 2. i2c/Core/CMSIS
+	url = https://github.com/ARM-software/CMSIS_5.git
+[submodule "2. i2c/Core/Drivers"]
+	path = 2. i2c/Core/Drivers
+	url = https://github.com/STMicroelectronics/stm32f4xx_hal_driver
+[submodule "2. i2c/Core/Device"]
+	path = 2. i2c/Core/Device
+	url = https://github.com/STMicroelectronics/cmsis_device_f4
