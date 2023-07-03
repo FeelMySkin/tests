@@ -8,7 +8,47 @@
   "virtualFolder": {
     "name": "<virtual_root>",
     "files": [],
-    "folders": []
+    "folders": [
+      {
+        "name": "Drivers",
+        "files": [
+          {
+            "path": "Core/Drivers/Src/stm32f4xx_ll_gpio.c"
+          },
+          {
+            "path": "Core/Drivers/Src/stm32f4xx_ll_pwr.c"
+          },
+          {
+            "path": "Core/Drivers/Src/stm32f4xx_ll_rcc.c"
+          },
+          {
+            "path": "Core/Drivers/Src/stm32f4xx_ll_tim.c"
+          },
+          {
+            "path": "Core/Drivers/Src/stm32f4xx_ll_utils.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Sources",
+        "files": [
+          {
+            "path": "Core/Device/Source/Templates/arm/startup_stm32f411xe.s"
+          },
+          {
+            "path": "Core/Device/Source/Templates/system_stm32f4xx.c"
+          },
+          {
+            "path": "main.c"
+          },
+          {
+            "path": "soft_i2c.c"
+          }
+        ],
+        "folders": []
+      }
+    ]
   },
   "outDir": "build",
   "deviceName": null,
@@ -19,15 +59,37 @@
   "targets": {
     "Debug": {
       "excludeList": [],
-      "toolchain": "GCC",
+      "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",
         "floatingPointHardware": "none",
-        "scatterFilePath": "<YOUR_LINKER_SCRIPT>.lds",
-        "useCustomScatterFile": true,
+        "useCustomScatterFile": false,
+        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
         "storageLayout": {
-          "RAM": [],
-          "ROM": []
+          "RAM": [
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0x5000"
+              },
+              "isChecked": true,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x08000000",
+                "size": "0x10000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            }
+          ]
         },
         "options": "null"
       },
@@ -36,8 +98,8 @@
         "bin": "",
         "baseAddr": "",
         "cpuInfo": {
-          "vendor": "null",
-          "cpuName": "null"
+          "vendor": "ST",
+          "cpuName": "STM32F401CC"
         },
         "proType": 1,
         "speed": 8000,
@@ -47,11 +109,17 @@
       "custom_dep": {
         "name": "default",
         "incList": [
-          ".eide/deps"
+          ".eide/deps",
+          "Core/CMSIS/CMSIS/Core/Include",
+          "Core/Drivers/Inc",
+          "Core/Device/Include"
         ],
         "libList": [],
         "sourceDirList": [],
-        "defineList": []
+        "defineList": [
+          "USE_FULL_LL_DRIVER",
+          "STM32F401xC"
+        ]
       }
     }
   },
