@@ -10,15 +10,18 @@
 #include "stdint.h"
 #include "stdbool.h"
 
-#define SCL_GPIO            GPIOC
-#define SCL_PIN             LL_GPIO_PIN_14
+/*Пины для SСД и SDA*/
+#define SCL_GPIO            GPIOA
+#define SCL_PIN             LL_GPIO_PIN_5
 #define SDA_GPIO            GPIOA
-#define SDA_PIN             LL_GPIO_PIN_1
+#define SDA_PIN             LL_GPIO_PIN_15
 
+/*Таймеры*/
 #define I2C_TIM             TIM9
 #define I2C_TIM_Handler     TIM1_BRK_TIM9_IRQHandler
 #define I2C_TIM_IRQn        TIM1_BRK_TIM9_IRQn
 
+/*Структура для пина, чтобы удобно было передавать в SoftI2C*/
 typedef struct
 {
     GPIO_TypeDef*   port;

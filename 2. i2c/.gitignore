@@ -13,3 +13,9 @@
 # eide template
 *.ept
 *.eide-template
+
+JLink*
+*.uvguix*
+*.uvoptx
+*.scvd
+/DebugConfig
